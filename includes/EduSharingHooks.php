@@ -99,7 +99,6 @@ class EduSharingHooks {
         $postData->containerId  = $resourceData[ 'EDUSHARING_RESOURCE_PAGE_ID' ];
         $postData->resourceId   = $resourceId;
         $postData->nodeId       = preg_replace('/ccrep:\/\/.*\//', '', $resourceData[ 'EDUSHARING_RESOURCE_OBJECT_URL' ] );
-
         $usage = $eduService -> createUsage( $postData );
 
         if ( $usage ) {
@@ -290,7 +289,6 @@ class EduSharingHooks {
         // to prevent exception when running in visual editor context
         if ( $title->getNamespace() == -1 )
             return true;
-        // @TODO: Check if this is correct for the new mediawiki
         //$wikiPage   = WikiPage::factory( $title );
         // $pageId     = $wikiPage -> getId();
         $pageId = $title->getArticleID();
@@ -399,7 +397,7 @@ class EduSharingHooks {
 
             if(isset($args['action']) && ($args['action'] === 'processed')) {
                 $wrapperWidth = 'style="max-width: 100%; width: ' . $edu_sharing -> width . 'px;"';
-                //$wrapperStyle = 'style="height: ' . $edu_sharing -> height . 'px; width:' . $edu_sharing -> width . 'px; ' . $style . '"';                   
+                //$wrapperStyle = 'style="height: ' . $edu_sharing -> height . 'px; width:' . $edu_sharing -> width . 'px; ' . $style . '"';
                 $text = '<div class="mw-edusharing-container ' . $classes . '" ' . $wrapperWidth . '><div class="thumbinner"><div class="edu_wrapper" id="content_wrapper' . $edu_sharing -> id . '-' . $edu_sharing -> resourceid . '" ' . $wrapperWidth . '><div data-type="esObject" data-url="'.$dataUrl.'" class="spinnerContainer"><div class="inner"><div class="spinner1"></div></div><div class="inner"><div class="spinner2"></div></div><div class="inner"><div class="spinner3"></div></div></div></div></div></div>';
             } else {
                 $text = self::getPreview($edu_sharing, $input, $style);
