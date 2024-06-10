@@ -64,7 +64,8 @@ class EduSharingConfig {
 
         $this->privateKey = @file_get_contents( $this->privateKeyFile );
         if ( !$this->privateKey )
-            error_log( "no private key" );    
+            error_log( "no private key - did you run createKeys.php?" );
+            error_log( "no private key: " . $this->privateKeyFile );
     }
 
     private function loadRepoPublicKeyFromFile() {
