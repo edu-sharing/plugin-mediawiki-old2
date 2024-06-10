@@ -5,8 +5,8 @@
 class SpecialEduRenderProxy extends SpecialPage {
 
     function __construct() {
-		parent::__construct( 'EduRenderProxy', '', false );
-	}
+        parent::__construct( 'EduRenderProxy', '', false );
+    }
 
     public function execute( $par ) {
 
@@ -23,7 +23,7 @@ class SpecialEduRenderProxy extends SpecialPage {
         $edu_sharing->pageid = $request->getVal('pid');
         $edu_sharing->printTitle = $request->getVal('printTitle');
         $edu_sharing->language = $request->getVal('language');
-        
+
         $usageid = $request->getVal('usageid');
 
         $eduSharingService = new EduSharingService();
@@ -31,7 +31,7 @@ class SpecialEduRenderProxy extends SpecialPage {
 
         $edu_sharing->contenturl = $eduSharingService->config->contentUrl;
 
-        $postData->nodeId = str_replace("ccrep://local/","", $request->getVal('oid'));
+        $postData->nodeId = preg_replace('/ccrep:\/\/.*\//', '', $request->getVal('oid'));
         $postData->nodeVersion= null;
         $postData->containerId =  $request->getVal('pid');
         $postData->resourceId = $request->getVal('resid');
@@ -116,5 +116,5 @@ class SpecialEduRenderProxy extends SpecialPage {
         return $html;
     }
 
-    
+
 }

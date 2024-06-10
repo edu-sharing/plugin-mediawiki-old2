@@ -24,11 +24,12 @@ You will have to register the extension with an edu-sahing repository in order t
 
 Adjust the following configuration values in your LocalSettings.php according to your repository:
 
-- $wgEduSharingAppId = "your-wiki-app-id";
-- $wgEduSharingAppDomain = "yourwiki.domain.tld";
-- $wgEduSharingAppHost = "12.345.67.89"; 
-- $wgEduSharingBaseUrl = 'https://redaktion-staging.openeduhub.net/edu-sharing';
-
+```php
+$wgEduSharingAppId = "your-wiki-app-id";
+$wgEduSharingAppDomain = "yourwiki.domain.tld";
+$wgEduSharingAppHost = "12.345.67.89"; 
+$wgEduSharingBaseUrl = 'https://redaktion-staging.openeduhub.net/edu-sharing';
+```
 go to the extension's maintenance-folder [MEDIAWIKI_INSTALL_DIR]/extensions/EduSharing/maintenance and run
 php createKeys.php to generate a key pair for use with the repository and retrieve the repository's public key.
 (Usage: php createKeys.php [--regenerate-key-pair] [--get-repo-key-only])
